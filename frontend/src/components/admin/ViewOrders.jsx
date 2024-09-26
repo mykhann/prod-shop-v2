@@ -16,7 +16,7 @@ const ViewOrders = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/api/v1/orders/get", {
+        const res = await axios.get("https://prod-shop-v2.onrender.com/api/v1/orders/get", {
           withCredentials: true,
         });
         console.log(res.data);

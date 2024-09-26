@@ -47,7 +47,7 @@ const Signup = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:8000/api/v1/users/register",
+        "https://prod-shop-v2.onrender.com/api/v1/users/register",
         formData,
         {
           withCredentials: true,

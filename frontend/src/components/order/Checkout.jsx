@@ -30,7 +30,7 @@ const Checkout = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:8000/api/v1/orders/order', orderData, {
+      const response = await axios.post('https://prod-shop-v2.onrender.com/api/v1/orders/order', orderData, {
         withCredentials: true,
         headers: { 'Content-Type': 'application/json' },
       });

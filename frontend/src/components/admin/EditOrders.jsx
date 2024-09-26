@@ -20,7 +20,7 @@ const EditOrders = () => {
     const fetchSingleOrder = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8000/api/v1/orders/get/${orderId}`,
+          `https://prod-shop-v2.onrender.com/api/v1/orders/get/${orderId}`,
           { withCredentials: true }
         );
         console.log(res.data);
@@ -44,7 +44,7 @@ const EditOrders = () => {
     e.preventDefault();
     try {
       const res = await axios.patch(
-        `http://localhost:8000/api/v1/orders/update-status/${orderId}`,
+        `https://prod-shop-v2.onrender.com/api/v1/orders/update-status/${orderId}`,
         { orderStatus: status }, // Send orderStatus (correct key)
         {
           headers: { "Content-Type": "application/json" },
@@ -66,7 +66,7 @@ const EditOrders = () => {
   const deleteOrderHandler =async (e) => {
     e.preventDefault();
     try {
-      const res=await axios.delete(`http://localhost:8000/api/v1/orders/delete/${orderId}`,{withCredentials:true})
+      const res=await axios.delete(`https://prod-shop-v2.onrender.com/api/v1/orders/delete/${orderId}`,{withCredentials:true})
       console.log(res.data)
       
         toast.success(res.data.message)

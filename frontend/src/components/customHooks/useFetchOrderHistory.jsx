@@ -10,7 +10,7 @@ const useFetchOrderHistory = () => {
   useEffect(() => {
     const fetchOrderHistory = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/api/v1/orders/order-history", {
+        const res = await axios.get("https://prod-shop-v2.onrender.com/api/v1/orders/order-history", {
           withCredentials: true,
         });
         console.log(res.data)

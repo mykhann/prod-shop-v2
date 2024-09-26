@@ -18,7 +18,7 @@ const EditProduct = () => {
   const DeleteHandler = async () => {
     try {
       const res = await axios.delete(
-        `http://localhost:8000/api/v1/products/delete-product/${productId}`,
+        `https://prod-shop-v2.onrender.com/api/v1/products/delete-product/${productId}`,
         { withCredentials: true }
       );
       if (res.data.success) {
@@ -45,7 +45,7 @@ const EditProduct = () => {
     const fetchSingleProduct = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8000/api/v1/products/fetchProduct/${productId}`,
+          `https://prod-shop-v2.onrender.com/api/v1/products/fetchProduct/${productId}`,
           {
             withCredentials: true,
           }
@@ -88,7 +88,7 @@ const EditProduct = () => {
     }
     try {
       const res = await axios.patch(
-        `http://localhost:8000/api/v1/products/update-product/${productId}`,
+        `https://prod-shop-v2.onrender.com/api/v1/products/update-product/${productId}`,
         formData,
         {
           withCredentials: true,

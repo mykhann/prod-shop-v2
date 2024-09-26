@@ -9,7 +9,7 @@ const useFetchProducts = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const res = await axios.get("http://localhost:8000/api/v1/products/get",{withCredentials:true});
+                const res = await axios.get("https://prod-shop-v2.onrender.com/api/v1/products/get",{withCredentials:true});
                 if(res.data.success){
                     dispatch(setProducts(res.data.products));
                 console.log("Fetched products", res.data);

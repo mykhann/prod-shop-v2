@@ -12,7 +12,7 @@ const OrderHistory = () => {
   const handleCancelOrder = async (orderId) => {
     try {
       const res = await axios.patch(
-        `http://localhost:8000/api/v1/orders/cancel/${orderId}`,
+        `https://prod-shop-v2.onrender.com/api/v1/orders/cancel/${orderId}`,
         {},
         { withCredentials: true }
       );
@@ -28,7 +28,7 @@ const OrderHistory = () => {
 
   const handleDeleteOrder = async (orderId) => {
     try {
-        const res=await axios.delete(`http://localhost:8000/api/v1/orders/delete-user-order/${orderId}`,{withCredentials:true})
+        const res=await axios.delete(`https://prod-shop-v2.onrender.com/api/v1/orders/delete-user-order/${orderId}`,{withCredentials:true})
         if (res.data.success){
             toast.success(res.data.message);
         }

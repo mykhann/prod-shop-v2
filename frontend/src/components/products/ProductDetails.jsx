@@ -53,7 +53,7 @@ const ProductDetails = () => {
       
       <div className="overflow-hidden rounded-md w-80 h-80 mr-6">
         <img
-          src={singleProduct?.avatars}
+          src={singleProduct?.avatar}
           alt={singleProduct?.name}
           className="w-full h-full object-cover transition-transform duration-300 transform hover:scale-110"
         />

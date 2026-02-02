@@ -47,7 +47,7 @@ const Navbar = () => {
           <div className="flex-shrink-0">
             <Link to="/">
               <h1 className="text-2xl font-extrabold text-red-500 transform hover:scale-105 transition-transform duration-300">
-                MyStore
+                Leton Store
               </h1>
             </Link>
           </div>

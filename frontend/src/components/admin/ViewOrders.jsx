@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { FaEdit } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { baseUrl } from "../../baseUrl.js";
 
 const ViewOrders = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const ViewOrders = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await axios.get("https://prod-shop-v2.onrender.com/api/v1/orders/get", {
+        const res = await axios.get(`${baseUrl}/api/v1/orders/get`, {
           withCredentials: true,
         });
         console.log(res.data);
@@ -29,10 +30,50 @@ const ViewOrders = () => {
     };
     fetchOrders();
   }, [dispatch]);
+if (!orders || orders.length === 0) {
+  return (
+    <div className="flex bg-gray-900 min-h-screen">
+      <DashBoardSideBar />
 
-  if (!orders || orders.length === 0) {
-    return <p>No orders</p>;
-  }
+      <div className="flex-grow flex items-center justify-center p-6">
+        <div className="bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-10 max-w-md text-center">
+          <div className="flex justify-center mb-4">
+            <svg
+              className="w-16 h-16 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M20 13V7a2 2 0 00-2-2H6a2 2 0 00-2 2v6m16 0l-4 4m4-4l-4-4M4 13l4 4m-4-4l4-4"
+              />
+            </svg>
+          </div>
+
+          <h2 className="text-2xl font-bold text-white mb-2">
+            No Orders Found
+          </h2>
+
+          <p className="text-gray-400 mb-6">
+            There are currently no orders in the system.
+            Once customers place orders, they’ll appear here.
+          </p>
+
+          <button
+            onClick={() => window.location.reload()}
+            className="px-6 py-2 bg-cyan-700 hover:bg-cyan-600 transition rounded-lg text-white font-semibold"
+          >
+            Refresh
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 
   const getProductNames = (orderItems) => {
     return orderItems.reduce((acc, item, index) => {

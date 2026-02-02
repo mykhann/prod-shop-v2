@@ -8,7 +8,7 @@ const FooterSection = () => {
         {/* Logo */}
         <div className="mb-4">
           <h1 className="text-2xl font-extrabold text-red-500 transform hover:scale-105 transition-transform duration-300">
-            MyStore
+            Leton Store
           </h1>
         </div>
 

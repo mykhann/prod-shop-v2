@@ -9,8 +9,8 @@ import { upload } from "../middlewares/multer.middleware.js";
 
 const registerUser = asyncHandler(async (req, res) => {
     const { name, email, password, address } = req.body;
-    console.log("Request Body:", req.body); // Log request body
-    console.log("Request File:", req.file); // Log uploaded file info
+    console.log("Request Body:", req.body); 
+    console.log("Request File:", req.file); 
 
     // Check if all required fields are present
     if (!name || !email || !password || !address) {
@@ -105,7 +105,8 @@ const Login = asyncHandler(async (req, res) => {
     const cookieOptions = {
         maxAge: 24 * 60 * 60 * 1000,
         httpOnly: true,
-
+        secure:false,
+        sameSite:"lax"
     }
 
     res.status(200).cookie("token", token, cookieOptions).json({

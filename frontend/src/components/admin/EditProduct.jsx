@@ -6,6 +6,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { setSingleProduct } from "../../reduxStore/productSlice";
 import FooterSection from "@components/layout/FooterSection";
+import { baseUrl } from "../../baseUrl.js";
 
 const EditProduct = () => {
   const { singleProduct } = useSelector((store) => store.product);
@@ -18,7 +19,7 @@ const EditProduct = () => {
   const DeleteHandler = async () => {
     try {
       const res = await axios.delete(
-        `https://prod-shop-v2.onrender.com/api/v1/products/delete-product/${productId}`,
+        `${baseUrl}/api/v1/products/delete-product/${productId}`,
         { withCredentials: true }
       );
       if (res.data.success) {
@@ -45,7 +46,7 @@ const EditProduct = () => {
     const fetchSingleProduct = async () => {
       try {
         const res = await axios.get(
-          `https://prod-shop-v2.onrender.com/api/v1/products/fetchProduct/${productId}`,
+          `${baseUrl}/api/v1/products/fetchProduct/${productId}`,
           {
             withCredentials: true,
           }
@@ -88,7 +89,7 @@ const EditProduct = () => {
     }
     try {
       const res = await axios.patch(
-        `https://prod-shop-v2.onrender.com/api/v1/products/update-product/${productId}`,
+        `${baseUrl}/api/v1/products/update-product/${productId}`,
         formData,
         {
           withCredentials: true,
@@ -106,7 +107,7 @@ const EditProduct = () => {
   };
 
   if (!singleProduct) {
-    return <div>Loading...</div>; // Display loading message while product is being fetched
+    return <div>Loading...</div>; 
   }
 
   return (
@@ -197,7 +198,7 @@ const EditProduct = () => {
                     htmlFor="file"
                     className="cursor-pointer w-full block text-center bg-cyan-900 text-white p-2 border border-cyan-800 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 hover:bg-gray-800 transition duration-200"
                   >
-                    Choose File
+                    Update Image
                   </label>
                   <input
                     type="file"
@@ -215,7 +216,7 @@ const EditProduct = () => {
                   type="submit"
                   className="bg-cyan-900 text-white px-4 py-2 rounded hover:bg-cyan-950 transition duration-200 w-full"
                 >
-                  Update Product
+                  Save
                 </button>
                 <button
                   type="button"

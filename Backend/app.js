@@ -21,7 +21,8 @@ app.use(cookieParser())
 
 // CORS 
 const corsOptions = {
-    origin: 'https://prod-shop-v2.onrender.com/',
+    origin: 'https://prod-shop-v2.onrender.com',
+    // origin:"http://localhost:5173",
     credentials: true
 }
 app.use(cors(corsOptions))

@@ -3,6 +3,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setOrderHistory } from "../../reduxStore/orderSlice";
 import { toast } from "react-toastify";
+import { baseUrl } from "../../baseUrl.js";
+
 
 const useFetchOrderHistory = () => {
   const { orderHistory } = useSelector((store) => store.order);
@@ -10,7 +12,7 @@ const useFetchOrderHistory = () => {
   useEffect(() => {
     const fetchOrderHistory = async () => {
       try {
-        const res = await axios.get("https://prod-shop-v2.onrender.com/api/v1/orders/order-history", {
+        const res = await axios.get(`${baseUrl}/api/v1/orders/order-history`, {
           withCredentials: true,
         });
         console.log(res.data)

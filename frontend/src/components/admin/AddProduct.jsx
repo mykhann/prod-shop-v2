@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setSingleProduct } from "../../reduxStore/productSlice";
+import { baseUrl } from "../../baseUrl.js";
 
 const AddProduct = () => {
   const navigate = useNavigate();
@@ -44,7 +45,7 @@ const AddProduct = () => {
       formData.append("file", input.file);
     }
     try {
-      const res = await axios.post("https://prod-shop-v2.onrender.com/api/v1/products/create", formData, {
+      const res = await axios.post(`${baseUrl}/api/v1/products/create`, formData, {
         withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" },
       });

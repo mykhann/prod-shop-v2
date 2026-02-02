@@ -6,7 +6,8 @@ import { toast } from "react-toastify";
 import { setSingleProduct } from "../../reduxStore/productSlice";
 import Navbar from "@components/shared/Navbar";
 import FooterSection from "@components/layout/FooterSection";
-import { ArrowLeftCircleIcon, ArrowUpLeftIcon, ArrowUturnLeftIcon, BackspaceIcon, BackwardIcon, PhoneArrowDownLeftIcon } from "@heroicons/react/24/outline";
+import { ArrowUturnLeftIcon  } from "@heroicons/react/24/outline";
+import {baseUrl} from "../../baseUrl.js"
 
 const ProductDetails = () => {
   const { singleProduct } = useSelector((store) => store.product);
@@ -19,7 +20,7 @@ const ProductDetails = () => {
     const fetchProduct = async () => {
       try {
         const res = await axios.get(
-          `https://prod-shop-v2.onrender.com/api/v1/products/fetchProduct/${productId}`
+          `${baseUrl}/api/v1/products/fetchProduct/${productId}`
         );
         if (res.data.success) {
           dispatch(setSingleProduct(res.data.product));

@@ -37,7 +37,11 @@ const productSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
-    avatars: [{ type: String }],
+   avatar: {
+    type: String,
+    required: true,
+},
+
     reviews: [
         {
             user: {

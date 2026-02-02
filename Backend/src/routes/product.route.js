@@ -17,7 +17,7 @@ router.route("/create").post(
 router.route("/fetchProduct/:id").get(getProductById)
 router.route("/update-product/:id").patch(upload.single("file"), updateProduct)
 router.route("/delete-product/:id").delete(deleteProduct)
-router.route("/get").get(isAuthenticate,getAllProducts)
+router.route("/get").get(getAllProducts)
 
 
 export default router

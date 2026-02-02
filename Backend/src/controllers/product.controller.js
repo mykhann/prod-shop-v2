@@ -49,19 +49,7 @@ const createProduct = asyncHandler(async (req, res) => {
     });
     
 
-    const products = await Product.create({
-        name,
-        description,
-        price,
-        stock,
-        avatars: avatars?.url,
-        category
-    });
-
-    res.status(200).json({
-        success: true,
-        products
-    });
+ 
 });
 
 
@@ -77,10 +65,8 @@ const getProductById = asyncHandler(async (req, res) => {
 
 // Get All Products 
 const getAllProducts = asyncHandler(async (req, res) => {
-    const userId = req.user._id;
-    if (!userId) {
-        res.status(404).json({ success: false, message: "please login first" });
-    };
+   
+   
     const products = await Product.find();
     res.status(200).json({ success: true, products });
 

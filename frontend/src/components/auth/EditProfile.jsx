@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Form, Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { setUser } from "../../reduxStore/authSlice";
+import {baseUrl} from "../../baseUrl.js"
 
 const Signup = () => {
     const dispatch=useDispatch();
@@ -40,7 +41,7 @@ const Signup = () => {
             form.append("file",input.file)
         }
         try {
-            const res=await axios.patch("https://prod-shop-v2.onrender.com/api/v1/users/update",form,{
+            const res=await axios.patch(`${baseUrl}/api/v1/users/update`,form,{
                 withCredentials:true,
                 headers:{
                     "Content-Type":"multipart/form-data"
@@ -55,7 +56,7 @@ const Signup = () => {
             }
             
         } catch (error) {
-            toast.error(error.response.data.message);
+            toast.error(error.response?.data?.message);
             
             
         }

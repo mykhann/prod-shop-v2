@@ -5,9 +5,9 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { setSingleOrder } from "../../reduxStore/orderSlice";
-
+import {baseUrl} from "../../baseUrl.js"
 const EditOrders = () => {
-  const [status, setStatus] = useState(""); // Initialize status state
+  const [status, setStatus] = useState("");
   const params = useParams();
   const orderId = params.id;
   const dispatch = useDispatch();
@@ -20,13 +20,13 @@ const EditOrders = () => {
     const fetchSingleOrder = async () => {
       try {
         const res = await axios.get(
-          `https://prod-shop-v2.onrender.com/api/v1/orders/get/${orderId}`,
+          `${baseUrl}/api/v1/orders/get/${orderId}`,
           { withCredentials: true }
         );
         console.log(res.data);
         if (res.data.success) {
           dispatch(setSingleOrder(res.data.order));
-          setStatus(res.data.order.orderStatus); // Set initial status from fetched order
+          setStatus(res.data.order.orderStatus); 
           toast.success(res.data.message);
         }
       } catch (error) {
@@ -34,18 +34,18 @@ const EditOrders = () => {
       }
     };
     fetchSingleOrder();
-  }, [dispatch, orderId]); // Add orderId and dispatch as dependencies
+  }, [dispatch, orderId]); 
 
   const handleStatusChange = (e) => {
-    setStatus(e.target.value); // Update the status state on dropdown change
+    setStatus(e.target.value); 
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const res = await axios.patch(
-        `https://prod-shop-v2.onrender.com/api/v1/orders/update-status/${orderId}`,
-        { orderStatus: status }, // Send orderStatus (correct key)
+        `${baseUrl}/api/v1/orders/update-status/${orderId}`,
+        { orderStatus: status }, 
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
@@ -56,7 +56,7 @@ const EditOrders = () => {
       if (res.data.success) {
         dispatch(setSingleOrder(res.data.order));
         toast.success("Order updated successfully");
-        navigate(-1); // Optionally navigate after update
+        navigate(-1); 
       }
     } catch (error) {
       toast.error(error.response?.data?.message || "Failed to update status");
@@ -66,7 +66,7 @@ const EditOrders = () => {
   const deleteOrderHandler =async (e) => {
     e.preventDefault();
     try {
-      const res=await axios.delete(`https://prod-shop-v2.onrender.com/api/v1/orders/delete/${orderId}`,{withCredentials:true})
+      const res=await axios.delete(`${baseUrl}/api/v1/orders/delete/${orderId}`,{withCredentials:true})
       console.log(res.data)
       
         toast.success(res.data.message)
@@ -94,8 +94,8 @@ const EditOrders = () => {
                 <select
                   id="orderStatus"
                   name="orderStatus"
-                  value={status} // Bind value to status state
-                  onChange={handleStatusChange} // Handle change event
+                  value={status} 
+                  onChange={handleStatusChange} 
                   className="w-full p-2 bg-gray-900 text-white border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 >

@@ -11,6 +11,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../reduxStore/authSlice";
 import { toast } from "react-toastify";
+import { baseUrl } from "../../baseUrl.js";
 
 const DashBoardSideBar = ({ children }) => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ const DashBoardSideBar = ({ children }) => {
 
   const handleLogout = async () => {
     try {
-      const res = await axios.post("https://prod-shop-v2.onrender.com/api/v1/users/logout", {}, { withCredentials: true });
+      const res = await axios.post(`${baseUrl}/api/v1/users/logout`, {}, { withCredentials: true });
       if (res.data.success) {
         dispatch(setUser(null));
         toast.success(res.data.message);

@@ -3,7 +3,8 @@ import Navbar from "@components/shared/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { FaTrash } from "react-icons/fa"; // Importing the delete icon
+import { FaTrash } from "react-icons/fa"; 
+import {baseUrl} from "../../baseUrl.js"
 
 const OrderHistory = () => {
   const { orderHistory } = useSelector((store) => store.order);
@@ -12,7 +13,7 @@ const OrderHistory = () => {
   const handleCancelOrder = async (orderId) => {
     try {
       const res = await axios.patch(
-        `https://prod-shop-v2.onrender.com/api/v1/orders/cancel/${orderId}`,
+        `${baseUrl}/api/v1/orders/cancel/${orderId}`,
         {},
         { withCredentials: true }
       );
@@ -28,7 +29,7 @@ const OrderHistory = () => {
 
   const handleDeleteOrder = async (orderId) => {
     try {
-        const res=await axios.delete(`https://prod-shop-v2.onrender.com/api/v1/orders/delete-user-order/${orderId}`,{withCredentials:true})
+        const res=await axios.delete(`${baseUrl}/api/v1/orders/delete-user-order/${orderId}`,{withCredentials:true})
         if (res.data.success){
             toast.success(res.data.message);
         }

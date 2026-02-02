@@ -6,7 +6,7 @@ import { setUser } from "../../reduxStore/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import {baseUrl} from "../../baseUrl.js"
 const Login = () => {
   const { user } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://prod-shop-v2.onrender.com/api/v1/users/login",
+        `${baseUrl}/api/v1/users/login`,
         input,
         {
           withCredentials: true,

@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setProducts } from '../../reduxStore/productSlice';
+import { baseUrl } from "../../baseUrl.js";
 
 const useFetchProducts = () => {
     const dispatch = useDispatch();
@@ -9,7 +10,7 @@ const useFetchProducts = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const res = await axios.get("https://prod-shop-v2.onrender.com/api/v1/products/get",{withCredentials:true});
+                const res = await axios.get(`${baseUrl}/api/v1/products/get`,{withCredentials:true});
                 if(res.data.success){
                     dispatch(setProducts(res.data.products));
                 console.log("Fetched products", res.data);

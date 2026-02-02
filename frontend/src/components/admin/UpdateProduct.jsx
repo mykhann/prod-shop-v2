@@ -9,7 +9,7 @@ const ViewProducts = () => {
   const { products } = useSelector((store) => store.product);
   const navigate = useNavigate();
   useFetchProducts();
-  const [showMore, setShowMore] = useState({}); // State to control visibility of details for each product
+  const [showMore, setShowMore] = useState({}); 
 
   const toggleShowMore = (productId) => {
     setShowMore((prev) => ({
@@ -41,7 +41,7 @@ const ViewProducts = () => {
                   <tr className="border-b text-white border-gray-600 bg-gray-800 cursor-pointer hover:bg-gray-900">
                     <td className="py-3 px-4">{product?.name}</td>
                     <td className="py-3 px-4">
-                      <img src={product.avatars[0]} className="w-16 h-16 object-cover rounded" alt={product?.name} />
+                      <img src={product.avatar} className="w-16 h-16 object-cover rounded" alt={product?.name} />
                     </td>
                     <td className="py-3 px-4 flex space-x-2">
                       <FaEdit onClick={() => navigate(`/admin/product/edit/${product?._id}`)} className="text-blue-500 cursor-pointer text-xl hover:text-blue-700" title="Edit" />

@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { FaCriticalRole, FaPhotoVideo } from "react-icons/fa";
 import { PhotoIcon } from "@heroicons/react/24/outline";
 import { setUser } from "../../reduxStore/authSlice";
+import { baseUrl } from "../../baseUrl";
 
 const Signup = () => {
   const [input, setInput] = useState({
@@ -47,7 +48,7 @@ const Signup = () => {
 
     try {
       const res = await axios.post(
-        "https://prod-shop-v2.onrender.com/api/v1/users/register",
+        `${baseUrl}/api/v1/users/register`,
         formData,
         {
           withCredentials: true,

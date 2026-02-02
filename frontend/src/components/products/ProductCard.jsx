@@ -31,7 +31,7 @@ const dispatch=useDispatch()
 
   {/* Product Image */}
   <img
-    src={products.avatars[0]}
+    src={products.avatar}
     alt={products.name}
     className="w-full h-40 object-cover transition-transform duration-200 ease-in-out"
   />

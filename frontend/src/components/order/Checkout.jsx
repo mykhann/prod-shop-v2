@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { baseUrl } from "../../baseUrl.js";
 
 import { clearCart, setCartItems } from '../../reduxStore/cartSlice';
 import Navbar from '@components/shared/Navbar';
@@ -30,7 +31,7 @@ const Checkout = () => {
     };
 
     try {
-      const response = await axios.post('https://prod-shop-v2.onrender.com/api/v1/orders/order', orderData, {
+      const response = await axios.post(`${baseUrl}/api/v1/orders/order`, orderData, {
         withCredentials: true,
         headers: { 'Content-Type': 'application/json' },
       });
